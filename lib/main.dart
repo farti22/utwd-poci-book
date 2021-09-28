@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_poci_book/internal/application.dart';
 
 void main() {
-  runApp(MaterialApp(
-      home: Scaffold(
-    appBar: AppBar(title: const Text("PoCI App")),
-    body: const Center(
-        child: Text("PoCI Text",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ))),
-  )));
+  runApp(const Application());
 }

@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/presentation/home.dart';
+//import 'package:flutter_poci_book/presentation/lecture.dart';
+//import 'package:flutter_poci_book/presentation/practice.dart';
 
 class Application extends StatelessWidget {
+  const Application({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(title: const Text("PoCI App")),
-      body: const Center(
-          child: Text("PoCI Text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ))),
-    ));
+      home: const Home(),
+      //  routes: {
+      //    "/home": (context) => const Home(),
+      //    "/lecture": (context) => const Lecture(),
+      //   "/practice": (context) => const Practice(),
+      // },
+    );
   }
 }
