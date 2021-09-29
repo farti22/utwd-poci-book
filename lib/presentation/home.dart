@@ -38,7 +38,7 @@ class _HomeButtonState extends State<HomeButton> {
                 Icon(
                   widget.icon,
                   size: 64.0,
-                  color: Colors.green, //color: Colors.white,
+                  color: Colors.green,
                 ),
                 Text(
                   widget.title,
@@ -55,7 +55,7 @@ class _HomeButtonState extends State<HomeButton> {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
+                    spreadRadius: 7,
                     blurRadius: 7,
                     offset: const Offset(0, 2),
                   )
