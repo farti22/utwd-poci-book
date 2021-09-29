@@ -1,5 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_poci_book/presentation/practice.dart';
+//import 'package:flutter_poci_book/presentation/practice.dart';
+//import 'package:flutter_poci_book/presentation/lecture.dart';
+
+class HomeButton extends StatefulWidget {
+  String title;
+  IconData icon;
+  HomeButton({Key? key, required this.title, required this.icon})
+      : super(key: key);
+
+  @override
+  _HomeButtonState createState() => _HomeButtonState();
+}
+
+class _HomeButtonState extends State<HomeButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: InkWell(
+        onTap: () {
+          print("Container tap");
+        },
+        child: Container(
+          margin: const EdgeInsets.all(30.0),
+          color: Colors.blueAccent,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  widget.icon,
+                  size: 32.0,
+                  color: Colors.white,
+                ),
+                Text(
+                  widget.title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,30 +62,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text("PoCI App | Главная")),
-        body: const Center(child: Text("Center text")),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _currentIndex,
-          onTap: (value) {
-            print("Console:$value");
-            setState(() => _currentIndex = value);
-
-            switch (value) {
-              case 0:
-                Navigator.pushNamed(context, "/home");
-                break;
-              case 1:
-                Navigator.pushNamed(context, "/lecture");
-                break;
-              case 2:
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Practice()));
-            }
-          },
-          items: [
-            _bottomNavigationItem("Главная", const Icon(Icons.verified_user)),
-            _bottomNavigationItem("Теория", const Icon(Icons.verified_user)),
-            _bottomNavigationItem("Практика", const Icon(Icons.verified_user)),
+        body: Column(
+          children: <Widget>[
+            HomeButton(title: "Лекция", icon: Icons.accessibility_new_sharp),
+            HomeButton(title: "Практика", icon: Icons.account_box),
           ],
         ));
   }
