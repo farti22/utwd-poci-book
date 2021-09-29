@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_poci_book/presentation/practice.dart';
-//import 'package:flutter_poci_book/presentation/lecture.dart';
+import 'package:flutter_poci_book/presentation/practice.dart';
+import 'package:flutter_poci_book/presentation/lecture.dart';
 
 class HomeButton extends StatefulWidget {
   String title;
   IconData icon;
-  HomeButton({Key? key, required this.title, required this.icon})
+  Widget route;
+  HomeButton(
+      {Key? key, required this.title, required this.icon, required this.route})
       : super(key: key);
 
   @override
@@ -22,7 +24,8 @@ class _HomeButtonState extends State<HomeButton> {
           splashColor: Colors.greenAccent,
           splashFactory: InkRipple.splashFactory,
           onTap: () {
-            print("Container tap");
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => widget.route));
           },
           child: Container(
             margin: const EdgeInsets.all(30.0),
@@ -34,6 +37,7 @@ class _HomeButtonState extends State<HomeButton> {
                 Icon(
                   widget.icon,
                   size: 32.0,
+                  color: Colors.green,
                   //color: Colors.white,
                 ),
                 Text(
@@ -76,16 +80,32 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("PoCI App | Главная"),
+          title: const Text("PoCI Book"),
           elevation: 0.0,
           centerTitle: true,
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                print("MOON");
+              }, // tipa pominiy temy
+              icon: const Icon(Icons.nightlight_round_sharp),
+            )
+          ],
         ),
         body: Column(
           children: <Widget>[
-            HomeButton(title: "Лекция", icon: Icons.accessibility_new_sharp),
-            HomeButton(title: "Практика", icon: Icons.account_box),
+            HomeButton(
+              title: "Лекция",
+              icon: Icons.accessibility_new_sharp,
+              route: const Lecture(),
+            ),
+            HomeButton(
+              title: "Практика",
+              icon: Icons.account_box,
+              route: const Practice(),
+            ),
           ],
         ));
   }
