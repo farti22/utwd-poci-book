@@ -3,10 +3,11 @@ import 'package:flutter_poci_book/presentation/practice.dart';
 import 'package:flutter_poci_book/presentation/lecture.dart';
 
 class HomeButton extends StatefulWidget {
-  String title;
-  IconData icon;
-  Widget route;
-  HomeButton(
+  final String title;
+  final IconData icon;
+  final Widget route;
+
+  const HomeButton(
       {Key? key, required this.title, required this.icon, required this.route})
       : super(key: key);
 
@@ -38,7 +39,7 @@ class _HomeButtonState extends State<HomeButton> {
                   widget.icon,
                   size: 64.0,
                   color: Colors.green,
-                  //color: Colors.white,
+а                  //color: Colors.white,
                 ),
                 Text(
                   widget.title,
