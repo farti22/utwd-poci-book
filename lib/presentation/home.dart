@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_poci_book/presentation/practice.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,7 +30,8 @@ class _HomeState extends State<Home> {
                 Navigator.pushNamed(context, "/lecture");
                 break;
               case 2:
-                Navigator.pushNamed(context, "/practice");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Practice()));
             }
           },
           items: [
