@@ -75,45 +75,38 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("PoCI Book"),
-          elevation: 0.0,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {
-                print("MOON");
-              }, // tipa pominiy temy
-              icon: const Icon(Icons.nightlight_round_sharp),
-            )
-          ],
-        ),
-        body: Column(
-          children: <Widget>[
-            HomeButton(
-              title: "Лекция",
-              icon: Icons.accessibility_new_sharp,
-              route: const Lecture(),
-            ),
-            HomeButton(
-              title: "Практика",
-              icon: Icons.account_box,
-              route: const Practice(),
-            ),
-          ],
-        ));
-  }
-
-  BottomNavigationBarItem _bottomNavigationItem(String text, Icon icon) {
-    return BottomNavigationBarItem(
-      label: text,
-      icon: icon,
+      appBar: AppBar(
+        title: const Text("PoCI Book"),
+        elevation: 0.0,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              print("MOON");
+            }, // tipa pominiy temy
+            icon: const Icon(Icons.nightlight_round_sharp),
+          )
+        ],
+      ),
+      body: Column(
+        children: <Widget>[
+          HomeButton(
+            title: "Лекция",
+            icon: Icons.accessibility_new_sharp,
+            route: const Lecture(),
+          ),
+          const HomeButton(
+            title: "Практика",
+            icon: Icons.account_box,
+            route: Practice(),
+          ),
+        ],
+      ),
     );
   }
 }
