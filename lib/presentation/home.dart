@@ -36,7 +36,7 @@ class _HomeButtonState extends State<HomeButton> {
               children: <Widget>[
                 Icon(
                   widget.icon,
-                  size: 32.0,
+                  size: 64.0,
                   color: Colors.green,
                   //color: Colors.white,
                 ),
