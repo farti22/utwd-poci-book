@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/presentation/practice.dart';
-
+import 'package:flutter_poci_book/presentation/lecture.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -27,7 +27,8 @@ class _HomeState extends State<Home> {
                 Navigator.pushNamed(context, "/home");
                 break;
               case 1:
-                Navigator.pushNamed(context, "/lecture");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Lecture()));
                 break;
               case 2:
                 Navigator.push(context,
