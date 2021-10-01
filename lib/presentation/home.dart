@@ -50,16 +50,17 @@ class _HomeButtonState extends State<HomeButton> {
               ],
             ),
             decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 7,
-                    blurRadius: 7,
-                    offset: const Offset(0, 2),
-                  )
-                ]),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: 9,
+                  blurRadius: 11,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
           ),
         ),
       ),
