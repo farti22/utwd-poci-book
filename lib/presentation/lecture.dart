@@ -19,7 +19,11 @@ class _LectureState extends State<Lecture> {
           centerTitle: true,
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
-          leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu_sharp)),
+          leading: IconButton(onPressed: () {
+              //Navigator.push(context,
+                    //MaterialPageRoute(builder: (context) => const LectureList()));
+          }, 
+          icon: Icon(Icons.menu_sharp)),
           title: FlexibleSpaceBar(
             title: Container(
               child: Text("Теория", style: TextStyle(color: Colors.black)),
@@ -47,17 +51,17 @@ class _LectureCardState extends State<LectureCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 50,
         height: 200,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         decoration: BoxDecoration(
+          color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             border: Border.all(color: Colors.black38)),
         child: InkWell(
             child: Container(
                 alignment: Alignment.center,
                 child: Column(
-                  children: [Text("Лекция 1"), Divider(), Text("Многа текста")],
+                  children: [Text("Лекция 1", style: TextStyle(fontSize: 20)), Divider(), Text("Многа текста", style: TextStyle(fontSize: 14))],
                 ))));
   }
 }
