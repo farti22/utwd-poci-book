@@ -20,16 +20,25 @@ class _LectureState extends State<Lecture> {
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
           leading: IconButton(onPressed: () {
-              //Navigator.push(context,
-                    //MaterialPageRoute(builder: (context) => const LectureList()));
+              Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LectureList()));
           }, 
           icon: Icon(Icons.menu_sharp)),
           title: FlexibleSpaceBar(
-            title: Container(
+            title: Stack(children: [
+            Container(
               child: Text("Теория", style: TextStyle(color: Colors.black)),
-              margin: EdgeInsets.only(top: 15, left: 16),
+              margin: EdgeInsets.only(top: 27, left: 16),
             ),
-          )),
+            Container(
+              padding: EdgeInsets.only(left: 197, top: 17), 
+              child:  IconButton(
+              onPressed: (){}, 
+              icon: Icon(Icons.search_sharp))
+            )
+           
+            ]
+          ))),
       SliverList(
           delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
