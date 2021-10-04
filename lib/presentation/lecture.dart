@@ -24,21 +24,15 @@ class _LectureState extends State<Lecture> {
                     MaterialPageRoute(builder: (context) => const LectureList()));
           }, 
           icon: Icon(Icons.menu_sharp)),
-          title: FlexibleSpaceBar(
-            title: Stack(children: [
-            Container(
-              child: Text("Теория", style: TextStyle(color: Colors.black)),
-              margin: EdgeInsets.only(top: 27, left: 16),
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 197, top: 17), 
-              child:  IconButton(
-              onPressed: (){}, 
-              icon: Icon(Icons.search_sharp))
-            )
-           
+          title: Text("Теория", style: TextStyle(color: Colors.black)),
+            actions: [IconButton(
+              onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LectureSearch()));
+              }, 
+              icon: Icon(Icons.search_sharp)),
             ]
-          ))),
+          ),
       SliverList(
           delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -47,6 +41,46 @@ class _LectureState extends State<Lecture> {
         childCount: 30,
       ))
     ]));
+  }
+}
+
+class LectureSearch extends StatefulWidget {
+  const LectureSearch({Key? key}) : super(key: key);
+  @override
+  _LectureSearchState createState() => _LectureSearchState();
+}
+
+class _LectureSearchState extends State<LectureSearch> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        centerTitle: true,
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+          // The search area here
+          title: Container(
+        width: double.infinity,
+        height: 40,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Center(
+          child: TextField(
+            decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.clear),
+                  onPressed: () {
+                    /* Clear the search field */
+                  },
+                ),
+                hintText: 'Поиск...',
+                border: InputBorder.none),
+          ),
+        ),
+      )),
+    );
   }
 }
 
