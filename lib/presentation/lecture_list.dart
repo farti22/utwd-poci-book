@@ -10,17 +10,15 @@ class _LectureListState extends State<LectureList>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body: Stack(
-      children: [
-        AppBar(
+    appBar: AppBar(
           title: const Text("Cодержание"),
           elevation: 0.0,
           centerTitle: true,
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
         ),
-        Container(
-          padding: EdgeInsets.fromLTRB(0, 75, 0, 0),
+    body:  Container(
+          padding: EdgeInsets.only(left: 75),
           child: ListView.separated(
             padding: const EdgeInsets.all(8),
             itemCount: 30,
@@ -31,7 +29,6 @@ class _LectureListState extends State<LectureList>{
                   child: Text("Лекция №$index", style: TextStyle(fontSize: 22))
                 );
             }
-        ))
-      ]));
+        )));
   }
 }
