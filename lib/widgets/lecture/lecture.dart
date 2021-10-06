@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_poci_book/presentation/lecture_list.dart';
-import 'package:flutter_poci_book/presentation/home.dart';
+import 'package:flutter_poci_book/widgets/lecture/lecture_list.dart';
 
 class Lecture extends StatefulWidget {
   const Lecture({Key? key}) : super(key: key);
@@ -19,20 +18,25 @@ class _LectureState extends State<Lecture> {
           centerTitle: true,
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
-          leading: IconButton(onPressed: () {
-              Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LectureList()));
-          }, 
-          icon: Icon(Icons.menu_sharp)),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LectureList()));
+              },
+              icon: Icon(Icons.menu_sharp)),
           title: Text("Теория", style: TextStyle(color: Colors.black)),
-            actions: [IconButton(
-              onPressed: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LectureSearch()));
-              }, 
-              icon: Icon(Icons.search_sharp)),
-            ]
-          ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LectureSearch()));
+                },
+                icon: Icon(Icons.search_sharp)),
+          ]),
       SliverList(
           delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -55,31 +59,31 @@ class _LectureSearchState extends State<LectureSearch> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
+          elevation: 0.0,
+          centerTitle: true,
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.white,
           // The search area here
           title: Container(
-        width: double.infinity,
-        height: 40,
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(5)),
-        child: Center(
-          child: TextField(
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.clear),
-                  onPressed: () {
-                    /* Clear the search field */
-                  },
-                ),
-                hintText: 'Поиск...',
-                border: InputBorder.none),
-          ),
-        ),
-      )),
+            width: double.infinity,
+            height: 40,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(5)),
+            child: Center(
+              child: TextField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () {
+                        /* Clear the search field */
+                      },
+                    ),
+                    hintText: 'Поиск...',
+                    border: InputBorder.none),
+              ),
+            ),
+          )),
     );
   }
 }
@@ -97,14 +101,18 @@ class _LectureCardState extends State<LectureCard> {
         height: 200,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         decoration: BoxDecoration(
-          color: Colors.white,
+            color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             border: Border.all(color: Colors.black38)),
         child: InkWell(
             child: Container(
                 alignment: Alignment.center,
                 child: Column(
-                  children: [Text("Лекция 1", style: TextStyle(fontSize: 20)), Divider(), Text("Многа текста", style: TextStyle(fontSize: 14))],
+                  children: [
+                    Text("Лекция 1", style: TextStyle(fontSize: 20)),
+                    Divider(),
+                    Text("Многа текста", style: TextStyle(fontSize: 14))
+                  ],
                 ))));
   }
 }

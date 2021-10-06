@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_poci_book/internal/application.dart';
+import 'package:flutter_poci_book/application.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

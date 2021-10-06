@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/config.dart';
-import 'package:flutter_poci_book/presentation/home.dart';
+import 'package:flutter_poci_book/widgets/home.dart';
 import 'package:flutter_poci_book/theme.dart';
 //import 'package:flutter_poci_book/presentation/lecture.dart';
 //import 'package:flutter_poci_book/presentation/practice.dart';

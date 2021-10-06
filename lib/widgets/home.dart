@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/config.dart';
-import 'package:flutter_poci_book/presentation/practice.dart';
-import 'package:flutter_poci_book/presentation/lecture.dart';
+import 'package:flutter_poci_book/widgets/practice/practice.dart';
+import 'package:flutter_poci_book/widgets/lecture/lecture.dart';
 
 class HomeButton extends StatefulWidget {
   final String title;
