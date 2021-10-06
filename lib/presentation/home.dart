@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_poci_book/config.dart';
 import 'package:flutter_poci_book/presentation/practice.dart';
 import 'package:flutter_poci_book/presentation/lecture.dart';
 
@@ -88,6 +89,7 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             onPressed: () {
+              currentTheme.switchTheme();
               print("MOON");
             }, // tipa pominiy temy
             icon: const Icon(Icons.nightlight_round_sharp),
