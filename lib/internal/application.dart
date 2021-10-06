@@ -9,12 +9,9 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Home(),
-      //  routes: {
-      //    "/home": (context) => const Home(),
-      //    "/lecture": (context) => const Lecture(),
-      //   "/practice": (context) => const Practice(),
-      // },
+      home: Home(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'OpenSans'),
     );
   }
 }
