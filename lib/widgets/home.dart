@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_poci_book/config.dart';
 import 'package:flutter_poci_book/widgets/practice/practice.dart';
 import 'package:flutter_poci_book/widgets/lecture/lecture.dart';
 
@@ -23,7 +22,7 @@ class _HomeButtonState extends State<HomeButton> {
       flex: 1,
       child: Ink(
         child: InkWell(
-          splashColor: Colors.greenAccent,
+          splashColor: Colors.blue,
           splashFactory: InkRipple.splashFactory,
           onTap: () {
             Navigator.push(
@@ -39,10 +38,11 @@ class _HomeButtonState extends State<HomeButton> {
                 Icon(
                   widget.icon,
                   size: 64.0,
-                  color: Colors.green,
+                  color: Colors.blue,
                 ),
                 Text(
                   widget.title,
+                  //style: Theme.of(context).primaryTextTheme.bodyText1,
                   style: const TextStyle(
                     //color: Colors.white,
                     fontSize: 32,
@@ -89,21 +89,20 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              currentTheme.switchTheme();
               print("MOON");
             }, // tipa pominiy temy
-            icon: const Icon(Icons.nightlight_round_sharp),
+            icon: const Icon(Icons.settings),
           )
         ],
       ),
       body: Column(
-        children: <Widget>[
+        children: const <Widget>[
           HomeButton(
             title: "Лекция",
             icon: Icons.accessibility_new_sharp,
             route: const Lecture(),
           ),
-          const HomeButton(
+          HomeButton(
             title: "Практика",
             icon: Icons.account_box,
             route: Practice(),

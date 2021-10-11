@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_poci_book/widgets/practice/widgets/password_gen/view.dart';
 
 class PracticeTask extends StatefulWidget {
-  const PracticeTask({Key? key}) : super(key: key);
+  final Widget route;
+
+  const PracticeTask({Key? key, required this.route}) : super(key: key);
 
   @override
   _PracticeTaskState createState() => _PracticeTaskState();
@@ -10,31 +13,33 @@ class PracticeTask extends StatefulWidget {
 class _PracticeTaskState extends State<PracticeTask> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      child: const Center(
-        child: Text(
-          "Task #",
-          style: TextStyle(
-            fontSize: 16,
-          ),
-        ),
-      ),
+    return Ink(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
         border: Border.all(
-          color: Colors.green.shade400,
+          color: Colors.blue.shade400,
           width: 2,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 3,
-            blurRadius: 1,
-            offset: const Offset(0, 2),
+      ),
+      child: InkWell(
+        splashColor: Colors.blue.shade300,
+        splashFactory: InkRipple.splashFactory,
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => widget.route));
+        },
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          child: const Center(
+            child: Text(
+              "Генератор паролей",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -69,17 +74,7 @@ class _PracticeState extends State<Practice> {
           mainAxisSpacing: 12,
           crossAxisCount: 2,
           children: const <Widget>[
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
-            PracticeTask(),
+            PracticeTask(route: PasswordGeneratorView()),
           ],
         ),
       ),
