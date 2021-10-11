@@ -18,14 +18,15 @@ class _LectureListState extends State<LectureList>{
           foregroundColor: Colors.black,
         ),
     body:  Container(
-          padding: EdgeInsets.only(left: 75),
+          
           child: ListView.separated(
             padding: const EdgeInsets.all(8),
             itemCount: 30,
             separatorBuilder: (BuildContext context, int index) => Divider(),
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal:  30),
                   child: Text("Лекция №$index", style: TextStyle(fontSize: 22))
                 );
             }
