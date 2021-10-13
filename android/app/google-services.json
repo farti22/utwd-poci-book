@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "264469706866",
+    "project_id": "poci-utwd",
+    "storage_bucket": "poci-utwd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264469706866:android:831787ee2006734b7f6aeb",
+        "android_client_info": {
+          "package_name": "com.utwd.flutter_poci_book"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264469706866-qdm4qtemgq9g1967ues74a4luf4n5ii0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe9pSrPeeW3aqecBODhdtyZz9S86WuVcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264469706866-qdm4qtemgq9g1967ues74a4luf4n5ii0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

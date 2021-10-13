@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
           HomeButton(
             title: "Лекция",
             icon: Icons.accessibility_new_sharp,
-            route: const Lecture(),
+            route: Lecture(),
           ),
           HomeButton(
             title: "Практика",
