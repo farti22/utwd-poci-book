@@ -11,41 +11,47 @@ class PasswordGenerator {
     return password;
   }
 
-  static String generateWithMap({required PasswordSegmentMapper map}) {
+  static String? generateWithMap({required PasswordSegmentMapper map}) {
     var rand = Random();
-    String password = "";
+    String? password = "";
     print(map.length);
     for (int i = 0; i < map.length; i++) {
       var segment = PasswordSegmentMapper.getSegmentMap(map.segment[i]);
-      if (segment == "empty") {
-        password += map.segment[i];
+      if (segment == "FUNC") {
+        password = password! + customValue(map.getKeyWordLen());
         continue;
       }
-      print("map - " + segment);
+      print("map - " + segment!);
       var index = rand.nextInt(segment.length);
-      password += segment[index];
+      password = password! + segment[index];
     }
     return password;
   }
 }
 
 class PasswordSegmentMapper {
-  static const dicts = <String, String>{
-    "russian_low": "йцукенгшщзхъфывапролджэячсмитьбю",
-    "russian_up": "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ",
-    "numbers": "1234567890",
-    "symbols": "!#\$\"%&`,*",
+  static final _dicts = <String, String>{
+    "абс": "йцукенгшщзхъфывапролджэячсмитьбю",
+    "АБС": "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ",
+    "abc": "qwertyuiopasdfghjklzxcvbnm",
+    "ABC": "QWERTYUIOPASDFGHJKLZXCVBNM",
+    "123": "1234567890",
+    "#\$*": "!#\$\"%&`,*",
+    "FUNC": "FUNC"
   };
   int length = 0;
-  List<String> segment;
+  final int _keyWordLen;
+  List<String?> segment;
 
-  PasswordSegmentMapper(this.segment) {
+  PasswordSegmentMapper(this.segment, this._keyWordLen) {
     length = segment.length;
   }
+  int getKeyWordLen() {
+    return _keyWordLen;
+  }
 
-  static getSegmentMap(String str) {
-    if (dicts[str] == null) return "empty";
-    return dicts[str];
+  static String? getSegmentMap(String? str) {
+    return _dicts[str];
   }
 }
 
@@ -71,9 +77,9 @@ void main() {
     "russian_up",
   ];
 
-  PasswordSegmentMapper psm = PasswordSegmentMapper(map1);
+  PasswordSegmentMapper psm = PasswordSegmentMapper(map1, N);
   pas1 = PasswordGenerator.generate(16, "qewrtyuiopasfdghjkljzxcvnbmn");
-  pas2 = PasswordGenerator.generateWithMap(map: psm);
+  pas2 = PasswordGenerator.generateWithMap(map: psm)!;
 
   print("P1: " + pas1);
   print("P2: " + pas2);
