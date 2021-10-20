@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Lesson{
 
-  late String id;
+  late int id;
   late String name;
   //late String description;
   late String content;
@@ -27,7 +27,7 @@ class DatabaseService {
       for (var doc in querySnapshot.docs) {
       
         Lesson lesson = Lesson( // the first issue
-          id: doc.id,
+          id: doc.data()['id'],
           name: doc.data()['Name'],
           //description: doc['Description'],
           content: doc.data()['Content'],// ?? "Pusto",

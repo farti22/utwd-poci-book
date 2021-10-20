@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/widgets/practice/practice.dart';
-import 'package:flutter_poci_book/widgets/lecture/lecture.dart';
+import 'package:flutter_poci_book/widgets/lecture/list.dart';
 
 class HomeButton extends StatefulWidget {
   final String title;
@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
           HomeButton(
             title: "Лекция",
             icon: Icons.accessibility_new_sharp,
-            route: Lecture(),
+            route: LectureList(),
           ),
           HomeButton(
             title: "Практика",
