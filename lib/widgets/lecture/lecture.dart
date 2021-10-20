@@ -13,8 +13,7 @@ class _LectureState extends State<Lecture> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(slivers: <Widget>[
-      SliverAppBar(
+      appBar: AppBar(
           elevation: 0.0,
           centerTitle: true,
           foregroundColor: Colors.black,
@@ -38,10 +37,11 @@ class _LectureState extends State<Lecture> {
                 },
                 icon: Icon(Icons.search_sharp)),
           ]),
-      SliverList(
+        body: CustomScrollView(slivers: <Widget>[
+          SliverList(
           delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          return LectureCard();
+            (BuildContext context, int index) {
+          return LectureCard(title: index);
         },
         childCount: 30,
       ))
@@ -51,7 +51,9 @@ class _LectureState extends State<Lecture> {
 
 
 class LectureCard extends StatefulWidget {
-  const LectureCard({Key? key}) : super(key: key);
+  final int title;
+
+  const LectureCard({Key? key, required this.title}) : super(key: key);
   @override
   _LectureCardState createState() => _LectureCardState();
 }
@@ -59,22 +61,28 @@ class LectureCard extends StatefulWidget {
 class _LectureCardState extends State<LectureCard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 200,
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+    return InkWell(
+      onTap: (){
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LectureList()));
+            },
+      child: Container(
+        height: 250,
+        margin: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             border: Border.all(color: Colors.black38)),
-        child: InkWell(
-            child: Container(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    Text("Лекция 1", style: TextStyle(fontSize: 20)),
-                    Divider(),
-                    Text("Многа текста", style: TextStyle(fontSize: 14))
-                  ],
-                ))));
+            
+            child: Column(
+              children: [
+                Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
+                child: Text("Лекция №"+widget.title.toString(), textAlign: TextAlign.center, style: TextStyle(fontSize: 20))),
+                Divider(),
+                Text("Многа текста", style: TextStyle(fontSize: 14))
+              ],
+                )));  
   }
 }
