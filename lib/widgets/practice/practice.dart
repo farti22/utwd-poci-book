@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/password_gen/view.dart';
+import 'package:flutter_poci_book/widgets/practice/widgets/permutation_encrypt/view.dart';
 
 class PracticeTask extends StatefulWidget {
+  final String title;
   final Widget route;
 
-  const PracticeTask({Key? key, required this.route}) : super(key: key);
+  const PracticeTask({Key? key, required this.title, required this.route})
+      : super(key: key);
 
   @override
   _PracticeTaskState createState() => _PracticeTaskState();
@@ -30,11 +33,11 @@ class _PracticeTaskState extends State<PracticeTask> {
         },
         child: Container(
           padding: const EdgeInsets.all(8),
-          child: const Center(
+          child: Center(
             child: Text(
-              "Генератор паролей",
+              widget.title,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),
@@ -74,7 +77,11 @@ class _PracticeState extends State<Practice> {
           mainAxisSpacing: 12,
           crossAxisCount: 2,
           children: const <Widget>[
-            PracticeTask(route: PasswordGeneratorView()),
+            PracticeTask(
+                title: "Генератор паролей", route: PasswordGeneratorView()),
+            PracticeTask(
+                title: "Шифрование методами перестановки",
+                route: PermutationEncrypt()),
           ],
         ),
       ),
