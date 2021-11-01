@@ -1,4 +1,3 @@
-import 'package:flutter_html/shims/dart_ui_real.dart';
 import 'package:flutter_poci_book/helpers/pair.dart';
 import 'package:flutter_poci_book/helpers/math.dart';
 // for testing
@@ -9,22 +8,29 @@ class EncryptionTable {
   Pair<int, int> keys = Pair(0, 0);
   List<Pair<int, int>> availableKeys = [Pair(0, 0)];
 
+  bool checkEmptyKeys() {
+    if (keys.first == 0 && keys.second == 0) return true;
+    return false;
+  }
+
   void setAvailableKeys(int value) {
     List<Pair<int, int>> dividers = [];
-    for (int i = 2; i < value ~/ i; i++) {
+    for (int i = 2; i < value; i++) {
       print("i-$i");
       if (value % i == 0) {
         dividers.add(Pair(i, value ~/ i));
       }
     }
-    if (dividers.isEmpty) dividers = [Pair(0, 0)];
-    availableKeys = dividers;
+    if (dividers.isEmpty) {
+      availableKeys = [Pair(0, 0)];
+    } else {
+      availableKeys = dividers;
+    }
     print(availableKeys);
   }
 
   String encrypt(String str) {
     print(keys);
-    assert(keys.first == 0 && keys.second == 0, "Keys not select");
 
     var matrix = List.generate(keys.first, (i) => List.filled(keys.second, ''),
         growable: false);
@@ -37,7 +43,7 @@ class EncryptionTable {
     return matrixToString(matrix);
   }
 
-  String decrypt(String str, Pair<int, int> keys) {
+  String decrypt(String str) {
     var matrix = List.generate(keys.second, (i) => List.filled(keys.first, ''),
         growable: false);
 
@@ -107,46 +113,63 @@ class MagicSquare {
   int size = 5;
   int key = 1;
   String encrypt(String str) {
-    var temp = str;
-    if (str.length < size * size) {
-      temp = str.padRight(size * size, " ");
-    }
+    var enStr = "";
+    // split to chunks
+    var regex = RegExp(".{1,${size * size}}");
+    Iterable<String> chunks = regex.allMatches(str).map((m) => m.group(0)!);
 
-    var matrix =
-        List.generate(size, (i) => List.filled(size, ''), growable: false);
-
-    //String e
-    for (int i = 0; i < size; i++) {
-      for (int j = 0; j < size; j++) {
-        matrix[i][j] = temp[squares[size][key - 1][i][j] - 1];
+    for (var chunk in chunks) {
+      var temp = chunk;
+      if (chunk.length < size * size) {
+        temp = chunk.padRight(size * size, " ");
       }
+
+      var matrix =
+          List.generate(size, (i) => List.filled(size, ''), growable: false);
+
+      for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+          matrix[i][j] = temp[squares[size][key - 1][i][j] - 1];
+        }
+      }
+      print(matrix);
+      print("ENC: ${matrixToString(matrix)}");
+      enStr += matrixToString(matrix);
     }
-    print(matrix);
-    print("ENC: ${matrixToString(matrix)}");
-    return matrixToString(matrix);
+    print("Final ENC: ${enStr}");
+    return enStr;
   }
 
   String decrypt(String str) {
-    var matrix =
-        List.generate(size, (i) => List.filled(size, ''), growable: false);
+    var deStr = "";
+    // split to chunks
+    var regex = RegExp(".{1,${size * size}}");
+    Iterable<String> chunks = regex.allMatches(str).map((m) => m.group(0)!);
 
-    int k = 0;
-    for (int i = 0; i < size; i++) {
-      for (int j = 0; j < size; j++) {
-        matrix[i][j] = str[k++];
-      }
-    }
-    // Определение квадрата
-    k = 0;
-    var temp = List.filled(str.length, "0");
-    for (int i = 0; i < size; i++) {
-      for (int j = 0; j < size; j++) {
-        temp[squares[size][key - 1][i][j] - 1] = matrix[i][j];
-      }
-    }
+    for (var chunk in chunks) {
+      var matrix =
+          List.generate(size, (i) => List.filled(size, ''), growable: false);
 
-    print("DEC: ${temp.join('').trimRight()}");
-    return temp.join("").trimRight();
+      int k = 0;
+      for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+          matrix[i][j] = chunk[k++];
+        }
+      }
+      // Определение квадрата
+      k = 0;
+      var temp = List.filled(chunk.length, "0");
+      for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+          temp[squares[size][key - 1][i][j] - 1] = matrix[i][j];
+        }
+      }
+
+      print("DEC: ${temp.join('').trimRight()}");
+      deStr += temp.join("").trimRight();
+    }
+    print("Final DEC: ${deStr}");
+    return deStr;
   }
 
   void setSize(int size) {
@@ -179,8 +202,8 @@ void main() {
   var ms = MagicSquare();
 //  ms.selectSquareSize();
   String t2str1 =
-      "Это строка для магического квадрата."; // add padRight for error range
-  ms.setSize(6);
+      "Это строка для магического квадрата. С использованием частей которые нужно писать ручками и это странно";
+  ms.setSize(5);
   ms.setKey(2);
   String enc = ms.encrypt(t2str1);
   ms.decrypt(enc);
