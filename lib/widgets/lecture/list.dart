@@ -53,8 +53,9 @@ class _LectureListState extends State<LectureList> {
 
 class LectureCard extends StatefulWidget {
   final int index;
-
-  const LectureCard({Key? key, required this.index}) : super(key: key);
+  final String searchText;
+  const LectureCard({Key? key, required this.index, this.searchText = "ERROR"})
+      : super(key: key);
   @override
   _LectureCardState createState() => _LectureCardState();
 }
@@ -67,7 +68,8 @@ class _LectureCardState extends State<LectureCard> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => Lecture(index: widget.index)));
+                  builder: (context) => Lecture(
+                      index: widget.index, searchText: widget.searchText)));
         },
         child: Container(
             height: 250,

@@ -6,8 +6,9 @@ import 'package:html/parser.dart' as htmlparser;
 
 class Lecture extends StatefulWidget {
   final int index;
-
-  Lecture({Key? key, required this.index}) : super(key: key);
+  final String searchText;
+  Lecture({Key? key, required this.index, required this.searchText})
+      : super(key: key);
   @override
   _LectureState createState() => _LectureState();
 }
@@ -37,7 +38,9 @@ class _LectureState extends State<Lecture> {
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
           title: Text(
-            listData[widget.index].name,
+            widget.searchText == "ERROR"
+                ? listData[widget.index].name
+                : widget.searchText,
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -46,7 +49,24 @@ class _LectureState extends State<Lecture> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(children: [
               Html(
-                data: listData[widget.index].content,
+                data: listData[widget.index]
+                    .content
+                    .replaceAll(RegExp(widget.searchText), "<search></search>"),
+                customRender: //widget.searchText == " "
+                    //? {}
+                    {
+                  "search": (RenderContext context, Widget child) {
+                    print(widget.searchText);
+                    return TextSpan(
+                      text: widget.searchText,
+                      style: const TextStyle(
+                        backgroundColor: Colors.yellow,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
+                },
+                tagsList: Html.tags..addAll(["search"]),
               ),
               Padding(
                   padding: EdgeInsets.only(bottom: 15),
