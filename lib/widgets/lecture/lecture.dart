@@ -79,12 +79,12 @@ class _LectureState extends State<Lecture> {
                           visible: visLeft,
                           child: IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.arrow_left_sharp))),
+                              icon: Icon(Icons.navigate_before))),
                       Visibility(
                           visible: visRight,
                           child: IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.arrow_right_sharp))),
+                              icon: Icon(Icons.navigate_next))),
                     ],
                   ))
             ]),
