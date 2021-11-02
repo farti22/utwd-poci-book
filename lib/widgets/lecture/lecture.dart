@@ -16,6 +16,7 @@ class Lecture extends StatefulWidget {
 class _LectureState extends State<Lecture> {
   bool visRight = true;
   bool visLeft = true;
+  int _count = 0;
 
   void _changed(int index) {
     setState(() {
@@ -49,17 +50,18 @@ class _LectureState extends State<Lecture> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(children: [
               Html(
-                data: listData[widget.index]
-                    .content
-                    .replaceAll(RegExp(widget.searchText), "<search></search>"),
+                data: listData[widget.index].content.replaceAll(
+                    RegExp(widget.searchText, caseSensitive: false),
+                    "<search></search>"),
                 customRender: //widget.searchText == " "
                     //? {}
                     {
                   "search": (RenderContext context, Widget child) {
-                    print(widget.searchText);
+                    _count++;
                     return TextSpan(
-                      text: widget.searchText,
+                      text: widget.searchText.toUpperCase(),
                       style: const TextStyle(
+                        fontSize: 20,
                         backgroundColor: Colors.yellow,
                         fontWeight: FontWeight.bold,
                       ),
