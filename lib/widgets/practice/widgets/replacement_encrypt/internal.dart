@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter_poci_book/helpers/pair.dart';
 
 class CaesarSystem {
@@ -211,7 +209,7 @@ class PlayfairAlgoritm {
         bigramList[k] = v1 + v2;
       } else {
         bigramList[k] =
-            matrix[p1.first][p2.second] + matrix[p2.first][p1.second];ч
+            matrix[p1.first][p2.second] + matrix[p2.first][p1.second];
       }
       k++;
     }
