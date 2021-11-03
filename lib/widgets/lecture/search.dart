@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/widgets/lecture/list.dart';
 import 'package:flutter_poci_book/widgets/lecture/finder.dart';
+import 'package:flutter_poci_book/widgets/lecture/card.dart';
 import 'package:flutter_poci_book/main.dart';
 
 class LectureSearch extends StatefulWidget {
@@ -31,8 +32,7 @@ class _LectureSearchState extends State<LectureSearch> {
               onChanged: (str) {
                 var regex = RegExp(str, caseSensitive: false);
                 int index = 0;
-                print("NEW TEXT: ${str}");
-                print("Regex: ${regex}");
+
                 setState(() {
                   _searchText = str;
                   _indexList = [];
@@ -43,12 +43,11 @@ class _LectureSearchState extends State<LectureSearch> {
                     index++;
                   }
                 });
-                print(_indexList);
               },
               decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
+                    icon: const Icon(Icons.clear),
                     onPressed: () {
                       /* Clear the search field */
                     },
@@ -65,9 +64,12 @@ class _LectureSearchState extends State<LectureSearch> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return LectureCard(
-                    index: _indexList[index], searchText: _searchText);
+                  index: _indexList[index],
+                  searchText: _searchText,
+                  indexList: _indexList,
+                );
               },
-              childCount: this._indexList.length,
+              childCount: _indexList.length,
             ),
           )
         ],
