@@ -1,9 +1,6 @@
 import 'package:flutter_poci_book/helpers/pair.dart';
 import 'package:flutter_poci_book/helpers/math.dart';
-// for testing
-/// if used more than 1 задача then create ext_math.dart file
 
-// refactor in future ^-^ || remove selectKeys || remove 2 arg in decrypt func
 class EncryptionTable {
   Pair<int, int> keys = Pair(0, 0);
   List<Pair<int, int>> availableKeys = [Pair(0, 0)];
@@ -16,7 +13,6 @@ class EncryptionTable {
   void setAvailableKeys(int value) {
     List<Pair<int, int>> dividers = [];
     for (int i = 2; i < value; i++) {
-      print("i-$i");
       if (value % i == 0) {
         dividers.add(Pair(i, value ~/ i));
       }
@@ -26,12 +22,9 @@ class EncryptionTable {
     } else {
       availableKeys = dividers;
     }
-    print(availableKeys);
   }
 
   String encrypt(String str) {
-    print(keys);
-
     var matrix = List.generate(keys.first, (i) => List.filled(keys.second, ''),
         growable: false);
 
@@ -49,7 +42,6 @@ class EncryptionTable {
 
     for (int i = 0; i < keys.first; i++) {
       for (int j = 0; j < keys.second; j++) {
-        //print(i + j * keys.second - j);
         matrix[j][i] = str[(i * matrix.length) + j];
       }
     }
@@ -132,11 +124,8 @@ class MagicSquare {
           matrix[i][j] = temp[squares[size][key - 1][i][j] - 1];
         }
       }
-      print(matrix);
-      print("ENC: ${matrixToString(matrix)}");
       enStr += matrixToString(matrix);
     }
-    print("Final ENC: ${enStr}");
     return enStr;
   }
 
@@ -165,10 +154,8 @@ class MagicSquare {
         }
       }
 
-      print("DEC: ${temp.join('').trimRight()}");
       deStr += temp.join("").trimRight();
     }
-    print("Final DEC: ${deStr}");
     return deStr;
   }
 
@@ -179,33 +166,4 @@ class MagicSquare {
   void setKey(int key) {
     this.key = key;
   }
-}
-
-void main() {
-  //Task 1
-  // String str1 =
-  //     "Привет я из будущего, как ты, все хорошо? Ты уже и забыл что такое ЗКИ. Знаю, это нормально.";
-  // String str2 =
-  //     "Не забываешь ли ты, в чем истинная сила? Истинная сила в небольшой груди!!! =^~^=";
-
-  // var enTable = EncryptionTable();
-  // enTable.setAvailableKeys(str1.length);
-  // enTable.selectKeys(1);
-  // String crStr = enTable.encrypt(str1);
-  // String deStr = enTable.decrypt(crStr, Pair(4, 23));
-  // print(crStr);
-  // print(deStr);
-  //print(str2.length);
-  //print(primeList(107));
-
-  //Task 2
-  var ms = MagicSquare();
-//  ms.selectSquareSize();
-  String t2str1 =
-      "Это строка для магического квадрата. С использованием частей которые нужно писать ручками и это странно";
-  ms.setSize(5);
-  ms.setKey(2);
-  String enc = ms.encrypt(t2str1);
-  ms.decrypt(enc);
-  print(t2str1.length);
 }
