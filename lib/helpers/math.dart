@@ -29,3 +29,16 @@ String matrixToString(List<List> matrix) {
   });
   return str;
 }
+
+/// Транспонирует матрицу строк
+List<List<String>> matrixTransp(List<List<String>> matrix) {
+  var transpMatrix = List.generate(
+      matrix[0].length, (index) => List.filled(matrix.length, ""));
+
+  for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[0].length; j++) {
+      transpMatrix[j][i] = matrix[i][j];
+    }
+  }
+  return transpMatrix;
+}
