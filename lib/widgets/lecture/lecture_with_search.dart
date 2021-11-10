@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/main.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_poci_book/widgets/utils/appbar.dart';
 
 int getIndex(List arr, dynamic value) {
   int index = 0;
@@ -45,11 +46,8 @@ class _LectureWithSearchState extends State<LectureWithSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0.0,
-          centerTitle: true,
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.white,
+        appBar: UniAppBar(
+          context,
           title: Text(
             widget.searchText,
             style: const TextStyle(color: Colors.black),

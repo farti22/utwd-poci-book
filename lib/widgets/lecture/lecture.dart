@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_poci_book/main.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_poci_book/widgets/lecture/list.dart';
+import 'package:flutter_poci_book/widgets/utils/appbar.dart';
 
 class Lecture extends StatefulWidget {
   final int index;
@@ -30,17 +31,17 @@ class _LectureState extends State<Lecture> {
   Widget build(BuildContext context) {
     _changed(widget.index);
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
-        title: const Text("Теория", style: TextStyle(color: Colors.black)),
+      appBar: UniAppBar(
+        context,
+        title: const Text(
+          "Теория",
+          style: TextStyle(color: Colors.black),
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_outlined),
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LectureList()));
+                MaterialPageRoute(builder: (context) => const LectureList()));
           },
         ),
       ),
@@ -58,7 +59,7 @@ class _LectureState extends State<Lecture> {
             excludeHeaderSemantics: true,
             leading: Container(),
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsets.symmetric(vertical: 12, horizontal: 0),
+              titlePadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 0),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

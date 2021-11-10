@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'search.dart';
 import 'package:flutter_poci_book/main.dart';
 import 'card.dart';
+import 'package:flutter_poci_book/widgets/utils/appbar.dart';
 
 class LectureList extends StatefulWidget {
   const LectureList({Key? key}) : super(key: key);
@@ -14,33 +15,39 @@ class _LectureListState extends State<LectureList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          elevation: 0.0,
-          centerTitle: true,
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.white,
-          title: const Text("Теория", style: TextStyle(color: Colors.black)),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LectureSearch()));
-                },
-                icon: const Icon(Icons.search_sharp)),
-          ]),
-      body: listData.isNotEmpty
-          ? CustomScrollView(slivers: <Widget>[
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    return LectureCard(index: index);
-                  },
-                  childCount: 28,
+      appBar: UniAppBar(
+        context,
+        title: const Text(
+          "Теория",
+          style: TextStyle(color: Colors.black),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LectureSearch(),
                 ),
-              ),
-            ])
+              );
+            },
+            icon: const Icon(Icons.search_sharp),
+          ),
+        ],
+      ),
+      body: listData.isNotEmpty
+          ? CustomScrollView(
+              slivers: <Widget>[
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return LectureCard(index: index);
+                    },
+                    childCount: 28,
+                  ),
+                ),
+              ],
+            )
           : const Center(
               child: Text("Включите интернет, чтобы загрузить лекции"),
             ),
