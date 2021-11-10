@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/widgets/lecture/list.dart';
-import 'package:flutter_poci_book/widgets/lecture/finder.dart';
 import 'package:flutter_poci_book/widgets/lecture/card.dart';
 import 'package:flutter_poci_book/main.dart';
 

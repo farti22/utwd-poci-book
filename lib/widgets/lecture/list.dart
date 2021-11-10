@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'navigator.dart';
 import 'search.dart';
 import 'package:flutter_poci_book/main.dart';
 import 'card.dart';
@@ -20,14 +19,6 @@ class _LectureListState extends State<LectureList> {
           centerTitle: true,
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LectureNavigator()));
-              },
-              icon: const Icon(Icons.menu_sharp)),
           title: const Text("Теория", style: TextStyle(color: Colors.black)),
           actions: [
             IconButton(
@@ -46,7 +37,7 @@ class _LectureListState extends State<LectureList> {
                   (BuildContext context, int index) {
                     return LectureCard(index: index);
                   },
-                  childCount: 30,
+                  childCount: 28,
                 ),
               ),
             ])
