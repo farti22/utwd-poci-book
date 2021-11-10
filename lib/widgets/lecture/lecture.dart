@@ -21,7 +21,7 @@ class _LectureState extends State<Lecture> {
       if (index == 0) {
         visLeft = false;
       }
-      if (index == listData.length) {
+      if (index == listData.length - 1) {
         visRight = false;
       }
     });
@@ -55,13 +55,15 @@ class _LectureState extends State<Lecture> {
             centerTitle: true,
             foregroundColor: Colors.black,
             backgroundColor: Colors.blue,
-            expandedHeight: 100.0,
+            expandedHeight: 160.0,
             excludeHeaderSemantics: true,
             leading: Container(),
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 0),
+              titlePadding:
+                  const EdgeInsets.symmetric(vertical: 12, horizontal: 0),
               title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Flexible(
                     flex: 1,
@@ -88,9 +90,10 @@ class _LectureState extends State<Lecture> {
                     flex: 3,
                     child: Text(
                       listData[widget.index].name,
+                      overflow: TextOverflow.fade,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontSize: 14,
+                        fontSize: 10,
                         color: Colors.white,
                       ),
                     ),
