@@ -9,7 +9,7 @@ class LectureSearch extends StatefulWidget {
 }
 
 class _LectureSearchState extends State<LectureSearch> {
-  var _indexList = [0];
+  var _indexList = [-1];
   var _searchText = "";
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class _LectureSearchState extends State<LectureSearch> {
                 setState(() {
                   _searchText = str;
                   _indexList = [];
+                  if (str == "") _indexList = [-1];
                   for (var value in listData) {
                     if (regex.hasMatch(value.content)) {
                       _indexList.add(index);
@@ -58,18 +59,31 @@ class _LectureSearchState extends State<LectureSearch> {
       ),
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return LectureCard(
-                  index: _indexList[index],
-                  searchText: _searchText,
-                  indexList: _indexList,
-                );
-              },
-              childCount: _indexList.length,
-            ),
-          )
+          _indexList.first != -1
+              ? SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return LectureCard(
+                        index: _indexList[index],
+                        searchText: _searchText,
+                        indexList: _indexList,
+                      );
+                    },
+                    childCount: _indexList.length,
+                  ),
+                )
+              : const SliverToBoxAdapter(
+                  child: Padding(
+                  padding: EdgeInsets.only(top: 15.0),
+                  child: Text(
+                    "Ничего не найдено",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black45,
+                      fontSize: 19,
+                    ),
+                  ),
+                )),
         ],
       ),
     );
