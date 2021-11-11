@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/password_gen/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/permutation_encrypt/view.dart';
+import 'package:flutter_poci_book/widgets/practice/widgets/replacement_encrypt/view.dart';
 
 class PracticeTask extends StatefulWidget {
   final String title;
@@ -78,10 +79,17 @@ class _PracticeState extends State<Practice> {
           crossAxisCount: 2,
           children: const <Widget>[
             PracticeTask(
-                title: "Генератор паролей", route: PasswordGeneratorView()),
+              title: "Генератор паролей",
+              route: PasswordGeneratorView(),
+            ),
             PracticeTask(
-                title: "Шифрование методами перестановки",
-                route: PermutationEncrypt()),
+              title: "Шифрование методами перестановки",
+              route: PermutationEncrypt(),
+            ),
+            PracticeTask(
+              title: "Шифрование методами замены",
+              route: ReplacementGenerator(),
+            ),
           ],
         ),
       ),
