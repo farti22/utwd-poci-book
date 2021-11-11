@@ -70,7 +70,6 @@ List<int> intToList(int value) {
 }
 
 class BullsAndCowsGame {
-  String _strKey = "";
   var _list = [];
 
   bool _isBull(int value) {
@@ -86,16 +85,14 @@ class BullsAndCowsGame {
   void init() {
     List<int> set = [];
     while (set.length < 4) {
-      var key = Random().nextInt(9);
+      var key = set.isEmpty ? Random().nextInt(9) + 1 : Random().nextInt(10);
       if (set.contains(key)) continue;
       set.add(key);
     }
     _list = set;
-    _strKey = set.toString();
-    print("Gen key: $_strKey");
   }
 
-  void check(int value) {
+  List<int> check(int value) {
     int cows = 0;
     int bulls = 0;
     var list = intToList(value);
@@ -110,20 +107,11 @@ class BullsAndCowsGame {
     }
     print("COWS: $cows");
     print("BULLS: $bulls");
+    return [cows, bulls];
   }
 
   bool isUnique(int value) {
     var list = intToList(value);
     return list.length == list.toSet().length;
   }
-}
-
-void main() {
-  //var list = randomNumList();
-  //var str = "test";
-
-  var game = BullsAndCowsGame();
-  game.init();
-  print(game.isUnique(1233));
-  game.check(1234);
 }
