@@ -5,6 +5,7 @@ import 'package:flutter_poci_book/widgets/practice/widgets/permutation_encrypt/i
 import 'package:flutter_poci_book/widgets/utils/outline_textfield.dart';
 import 'package:flutter_poci_book/widgets/utils/snackbar.dart';
 import 'package:flutter_poci_book/widgets/utils/appbar.dart';
+import 'package:flutter_poci_book/widgets/utils/tasktabbar.dart';
 
 class PermutationEncrypt extends StatefulWidget {
   const PermutationEncrypt({Key? key}) : super(key: key);
@@ -35,21 +36,9 @@ class _PermutationEncryptState extends State<PermutationEncrypt> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: UniAppBar(
-          context,
-          title: const Text("Шифрование методами перестановки"),
-          bottom: const TabBar(
-            labelColor: Colors.black,
-            tabs: <Widget>[
-              Tab(
-                text: "Задание 1",
-              ),
-              Tab(
-                text: "Задание 2",
-              ),
-            ],
-          ),
-        ),
+        appBar: UniAppBar(context,
+            title: const Text("Шифрование методами перестановки"),
+            bottom: TaskTabBar(context, 2)),
         body: TabBarView(
           children: [
             Container(

@@ -4,6 +4,7 @@ import 'package:flutter_poci_book/widgets/practice/widgets/replacement_encrypt/i
 import 'package:flutter_poci_book/widgets/utils/outline_textfield.dart';
 import 'package:flutter_poci_book/widgets/utils/snackbar.dart';
 import 'package:flutter_poci_book/widgets/utils/appbar.dart';
+import 'package:flutter_poci_book/widgets/utils/tasktabbar.dart';
 
 class ReplacementGenerator extends StatefulWidget {
   const ReplacementGenerator({Key? key}) : super(key: key);
@@ -35,20 +36,7 @@ class _ReplacementGeneratorState extends State<ReplacementGenerator> {
         appBar: UniAppBar(
           context,
           title: const Text("Шифрование методами замены"),
-          bottom: const TabBar(
-            labelColor: Colors.black,
-            tabs: <Widget>[
-              Tab(
-                text: "Задание 1",
-              ),
-              Tab(
-                text: "Задание 2",
-              ),
-              Tab(
-                text: "Задание 3",
-              ),
-            ],
-          ),
+          bottom: TaskTabBar(context, 3),
         ),
         body: TabBarView(
           children: [
