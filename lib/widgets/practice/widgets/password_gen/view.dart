@@ -4,6 +4,7 @@ import 'package:flutter_poci_book/widgets/practice/widgets/password_gen/internal
 import 'package:flutter_poci_book/widgets/utils/outline_textfield.dart';
 import 'package:flutter_poci_book/widgets/utils/snackbar.dart';
 import 'package:flutter_poci_book/widgets/utils/appbar.dart';
+import 'package:flutter_poci_book/widgets/utils/tasktabbar.dart';
 
 class PasswordGeneratorView extends StatefulWidget {
   const PasswordGeneratorView({Key? key}) : super(key: key);
@@ -44,17 +45,7 @@ class _PracticeGeneratorViewState extends State<PasswordGeneratorView> {
         appBar: UniAppBar(
           context,
           title: const Text("Генератор паролей"),
-          bottom: const TabBar(
-            labelColor: Colors.black,
-            tabs: <Widget>[
-              Tab(
-                text: "Задание 1",
-              ),
-              Tab(
-                text: "Задание 2",
-              ),
-            ],
-          ),
+          bottom: TaskTabBar(context, 2),
         ),
         body: TabBarView(
           children: [
