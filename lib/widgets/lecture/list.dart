@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'search.dart';
+import 'package:flutter_poci_book/widgets/home.dart';
 import 'package:flutter_poci_book/main.dart';
 import 'card.dart';
 import 'package:flutter_poci_book/widgets/utils/appbar.dart';
@@ -20,6 +21,17 @@ class _LectureListState extends State<LectureList> {
         title: const Text(
           "Теория",
           style: TextStyle(color: Colors.black),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Home(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.arrow_back_outlined),
         ),
         actions: [
           IconButton(
