@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/widgets/practice/practice.dart';
 import 'package:flutter_poci_book/widgets/lecture/list.dart';
+import 'package:flutter_poci_book/widgets/utils/appbar.dart';
 
 class HomeButton extends StatefulWidget {
   final String title;
@@ -80,20 +81,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: UniAppBar(
+        context,
         title: const Text("PoCI Book"),
-        elevation: 0.0,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              print("MOON");
-            }, // tipa pominiy temy
-            icon: const Icon(Icons.settings),
-          )
-        ],
+        leading: Container(),
       ),
       body: Column(
         children: const <Widget>[
