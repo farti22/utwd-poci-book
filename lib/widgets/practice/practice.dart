@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/password_gen/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/permutation_encrypt/view.dart';
+import 'package:flutter_poci_book/widgets/practice/widgets/random_sequence_gen/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/replacement_encrypt/view.dart';
 
 class PracticeTask extends StatefulWidget {
@@ -89,6 +90,10 @@ class _PracticeState extends State<Practice> {
             PracticeTask(
               title: "Шифрование методами замены",
               route: ReplacementGenerator(),
+            ),
+            PracticeTask(
+              title: "Реализация генератора псевдослучайной последовательности",
+              route: RandomSequenceGen(),
             ),
           ],
         ),
