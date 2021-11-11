@@ -11,6 +11,14 @@ class LectureSearch extends StatefulWidget {
 class _LectureSearchState extends State<LectureSearch> {
   var _indexList = [-1];
   var _searchText = "";
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +35,7 @@ class _LectureSearchState extends State<LectureSearch> {
               color: Colors.white, borderRadius: BorderRadius.circular(5)),
           child: Center(
             child: TextField(
+              controller: myController,
               onChanged: (str) {
                 var regex = RegExp(str, caseSensitive: false);
                 int index = 0;
@@ -34,13 +43,13 @@ class _LectureSearchState extends State<LectureSearch> {
                 setState(() {
                   _searchText = str;
                   _indexList = [];
-                  if (str == "") _indexList = [-1];
                   for (var value in listData) {
                     if (regex.hasMatch(value.content)) {
                       _indexList.add(index);
                     }
                     index++;
                   }
+                  if (str == "" || _indexList.isEmpty) _indexList = [-1];
                 });
               },
               decoration: InputDecoration(
@@ -48,7 +57,10 @@ class _LectureSearchState extends State<LectureSearch> {
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.clear),
                     onPressed: () {
-                      /* Clear the search field */
+                      setState(() {
+                        myController.clear();
+                        _indexList = [-1];
+                      });
                     },
                   ),
                   hintText: 'Поиск...',
