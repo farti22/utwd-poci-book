@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:encrypt/encrypt.dart';
 
 class RSA {
   int publicKey = 0;
