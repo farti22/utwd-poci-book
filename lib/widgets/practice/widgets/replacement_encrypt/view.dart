@@ -59,7 +59,7 @@ class _ReplacementGeneratorState extends State<ReplacementGenerator> {
                             child: OutlinedTextField(
                                 textInputFormatter: [
                                   FilteringTextInputFormatter.allow(
-                                      RegExp('[а-яА-Я]')),
+                                      RegExp('[а-яА-ЯёЁ]')),
                                 ],
                                 labelText: "Текст",
                                 hintText: "Введите текст",
@@ -172,7 +172,7 @@ class _ReplacementGeneratorState extends State<ReplacementGenerator> {
                       child: OutlinedTextField(
                           textInputFormatter: [
                             FilteringTextInputFormatter.allow(
-                                RegExp('[а-яА-Я]')),
+                                RegExp('[а-яА-ЯеЁ .,]')),
                           ],
                           labelText: "Текст",
                           hintText: "Введите текст",
@@ -191,7 +191,8 @@ class _ReplacementGeneratorState extends State<ReplacementGenerator> {
                             padding: const EdgeInsets.symmetric(horizontal: 6),
                             child: OutlinedTextField(
                                 textInputFormatter: [
-                                  FilteringTextInputFormatter.digitsOnly,
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp("[0-9]")),
                                 ],
                                 labelText: "Ключ 1",
                                 hintText: "1",
@@ -330,7 +331,8 @@ class _ReplacementGeneratorState extends State<ReplacementGenerator> {
                       padding: const EdgeInsets.only(right: 18.0),
                       child: OutlinedTextField(
                         textInputFormatter: [
-                          FilteringTextInputFormatter.allow(RegExp('[а-яА-Я]')),
+                          FilteringTextInputFormatter.allow(
+                              RegExp('[а-яА-ЯеЁ]')),
                         ],
                         labelText: "Текст",
                         hintText: "Введите текст",
@@ -347,7 +349,8 @@ class _ReplacementGeneratorState extends State<ReplacementGenerator> {
                       padding: const EdgeInsets.only(right: 18.0),
                       child: OutlinedTextField(
                         textInputFormatter: [
-                          FilteringTextInputFormatter.allow(RegExp('[а-яА-Я]')),
+                          FilteringTextInputFormatter.allow(
+                              RegExp('[а-яА-ЯеЁ]')),
                         ],
                         labelText: "Ключ",
                         hintText: "Введите текст",
