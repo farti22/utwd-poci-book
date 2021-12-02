@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// Возвращает список натуральных чисел до указанного числа
 List<int> primeList(int n) {
   var primes = <int>[2];
@@ -41,4 +43,11 @@ List<List<String>> matrixTransp(List<List<String>> matrix) {
     }
   }
   return transpMatrix;
+}
+
+bool isPrime(int value) {
+  for (int i = 2; i < sqrt(value); i++) {
+    if (value % i == 0) return false;
+  }
+  return true;
 }
