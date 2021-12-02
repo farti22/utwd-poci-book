@@ -57,80 +57,10 @@ class RSA {
   }
 }
 
-int randomValue32() {
-  String bits = "";
-  int amountBits = 32;
-  while (amountBits-- != 0) {
-    bits += Random().nextInt(2).toString();
-  }
-  //print(bits);
-  return int.parse(bits, radix: 2);
-}
-
-bool millerTest(int d, int n) {
-  int a = 2 + (Random().nextInt(1 << 32) * (n - 2) % (n - 4));
-  int x = a.modPow(d, n);
-
-  if (x == 1 || x == n - 1) return true;
-
-  while (d != n - 1) {
-    x = (x * x) % n;
-    d *= 2;
-    if (x == 1) return false;
-    if (x == n - 1) return true;
-  }
-  return false;
-}
-
-bool isPrime(int n, int k) {
-  if (n <= 1 || n == 4) return false;
-  if (n <= 3) return true;
-
-  int d = n - 1;
-  while (d % 2 == 0) {
-    d ~/= 2;
-  }
-  for (int i = 0; i < k; i++) {
-    if (!millerTest(d, n)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-// Limit 32 bit
-int randomPrime(int amountBits) {
-  List<int> simplePrime = [2, 3, 5, 7, 11];
-  int value = 0;
-  while (true) {
-    value = randomValue32();
-
-    //First step
-    bool test1 = true;
-    for (var prime in simplePrime) {
-      if (value % prime != 0) {
-        test1 = false;
-        break;
-      }
-    }
-
-    if (!test1) continue;
-    if (isPrime(value, amountBits)) {
-      return value;
-    }
-    break;
-  }
-  return value;
-}
-
 class Elgamal {
   int p = 0;
   int g = 0;
   int x = 0;
-  int keyGen() {
-    int p = randomPrime(32);
-    return p;
-  }
 
   String encrypt(String text, int p, int g, int x) {
     var rand = new Random();
@@ -177,6 +107,7 @@ void main() {
   // rsa.encrypt(111111);
   // rsa.decrypt(4051753);
 
+  // in view check number is Prime
   var elg = Elgamal();
   String test =
       elg.encrypt("Decrypt string with Elgamal algoritm", 3571, 123, 8);
