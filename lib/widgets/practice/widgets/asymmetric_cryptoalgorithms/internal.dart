@@ -47,13 +47,12 @@ class RSA {
 
   int encrypt(int value) {
     var temp = value.modPow(publicKey, subKey);
-    return 0;
+    return temp;
   }
 
   int decrypt(int value) {
     var temp = value.modPow(privateKey, subKey);
-    print(temp);
-    return 0;
+    return temp;
   }
 }
 
@@ -96,7 +95,6 @@ class Elgamal {
         // print("$a | $b");
       }
     }
-    print(temp);
     return temp;
   }
 }
