@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_poci_book/widgets/practice/widgets/asymmetric_cryptoalgorithms/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/password_gen/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/permutation_encrypt/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/random_sequence_gen/view.dart';
@@ -95,6 +96,10 @@ class _PracticeState extends State<Practice> {
               title: "Реализация генератора псевдослучайной последовательности",
               route: RandomSequenceGen(),
             ),
+            PracticeTask(
+              title: "Асинхронные криптоалгоритмы",
+              route: AsymmetricCryptoalgorithms(),
+            )
           ],
         ),
       ),
