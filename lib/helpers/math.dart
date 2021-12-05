@@ -46,6 +46,7 @@ List<List<String>> matrixTransp(List<List<String>> matrix) {
 }
 
 bool isPrime(int value) {
+  if (value < 2) return false;
   for (int i = 2; i < sqrt(value); i++) {
     if (value % i == 0) return false;
   }
