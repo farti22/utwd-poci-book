@@ -369,24 +369,24 @@ class PolybetWithKeyEncryption {
 
 void main() {
   // Task 1
-  // var dse = DoubleSwapEncryption();
-  // dse.setSize(6);
-  // dse.setKeys([4, 2, 1, 3, 5, 6], [2, 5, 6, 1, 3, 4]);
-  // print(dse.encrypt("двойная перестановка") + "]");
-  // print(dse.decrypt(" а к  овйдна            п еяреатнсов"));
-  // print("test");
+  var dse = DoubleSwapEncryption();
+  dse.setSize(6);
+  dse.setKeys([4, 2, 1, 3, 5, 6], [2, 5, 6, 1, 3, 4]);
+  print(dse.encrypt("двойная перестановка") + "]");
+  print(dse.decrypt(" а к  овйдна            п еяреатнсов"));
+  print("test");
 
   // Task 2
   // Method 1
-  var bpe = BasePolybeyEncryption();
-  bpe.encrypt("SOMETEXT");
-  bpe.decrypt("SWYSOCDU");
-  // Method 2
-  var cpe = ComplicatePolybeyEncryption();
-  cpe.encrypt("SOMETEXT", 1);
-  cpe.decrypt("IUPTNQVO", 1);
-  // Method 3
-  var pwke = PolybetWithKeyEncryption();
-  pwke.encrypt("SOMETEXT", "DRAFT");
-  pwke.decrypt("FMNXSEBT", "DRAFT");
+  // var bpe = BasePolybeyEncryption();
+  // bpe.encrypt("SOMETEXT");
+  // bpe.decrypt("SWYSOCDU");
+  // // Method 2
+  // var cpe = ComplicatePolybeyEncryption();
+  // cpe.encrypt("SOMETEXT", 1);
+  // cpe.decrypt("IUPTNQVO", 1);
+  // // Method 3
+  // var pwke = PolybetWithKeyEncryption();
+  // pwke.encrypt("SOMETEXT", "DRAFT");
+  // pwke.decrypt("FMNXSEBT", "DRAFT");
 }
