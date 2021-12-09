@@ -9,7 +9,6 @@ class DiffieHelmanConnector {
 }
 
 class DiffieHelmanUser {
-  late int publicKey;
   late int privateKey;
   bool client;
   DiffieHelmanConnector conn;

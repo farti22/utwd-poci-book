@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_poci_book/widgets/practice/widgets/hash_functions/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/symmetric_cryptoalgorithms/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/asymmetric_cryptoalgorithms/view.dart';
 import 'package:flutter_poci_book/widgets/practice/widgets/password_gen/view.dart';
@@ -104,6 +105,10 @@ class _PracticeState extends State<Practice> {
             PracticeTask(
               title: "Асинхронные криптоалгоритмы",
               route: AsymmetricCryptoalgorithms(),
+            ),
+            PracticeTask(
+              title: "Хэширование",
+              route: HashFunction(),
             )
           ],
         ),
